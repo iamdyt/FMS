@@ -1,0 +1,46 @@
+<aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                    <img src="images/icon/logo.png" alt="FMS" />
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="active has-sub">
+                            <a class="js-arrow" href="/dashboard">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                            
+                        </li>
+                        <li>
+                            <a href="{% url 'fms:all_dam' %}">
+                                <i class="fas fa-chart-bar"></i>Dam</a>
+                        </li>
+                         <li class="has-sub">
+                            <a class="js-arrow" href="#"><i class="fas fa-copy"></i>Departments</a>
+                                <a href=" {% url 'fms:create_dept' %}"> <i class="fas fa-plus"> </i> New Departments</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                              {% for d in dept  %}
+                                <li>
+                                    <a href="{% url 'fms:dept_single' pk=d.id %}">{{d.name}} </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="form.html">
+                               <i class="far fa-check-square"></i>Staff</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                        </li>
+                        <li>
+                            <a href="map.html">
+                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                      
+                    </ul>
+                </nav>
+            </div>
+        </aside>

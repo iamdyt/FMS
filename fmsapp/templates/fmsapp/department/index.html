@@ -1,0 +1,41 @@
+{% extends 'fmsapp/layout.html' %}
+{% load static %}
+{% block title %}
+{{dpt.name}} 
+{% endblock title %}
+
+{% block contents %}
+
+  <section class="container card mt-2">
+    <div class="row mt-4">
+      <div class="col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-header">
+            <div class="card-text"> 
+              {{dpt.name }} &emsp; &emsp;
+              <a href=" {% url 'fms:dept_edit' pk=dpt.pk %} "> <i class=" right text-info fas fa-edit"></i></a>&emsp; 
+              <a href="{% url 'fms:dept_delete' pk=dpt.pk %}"><i class="text-danger fas fa-trash"></i></a>
+            </div><hr>
+          </div>
+          <div class="card-body">
+            {{dpt.description}}
+          </div>
+         
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-header">
+            <div class="card-text"> Associated Staff</div><hr>
+          </div>
+          <div class="card-body">
+            {{dpt.description}}
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock contents  %}

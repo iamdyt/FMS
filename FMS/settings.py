@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'fmsapp'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'FMS.urls'
+AUTH_USER_MODEL = 'fmsapp.User'
 
 TEMPLATES = [
     {
@@ -62,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'fmsapp.context_processors.getDepartments'
             ],
         },
     },
@@ -75,8 +78,12 @@ WSGI_APPLICATION = 'FMS.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'fms',
+        'HOST':'127.0.0.1',
+        'USER':'postgres',
+        'PASSWORD':'olanlokun30',
+        'PORT':'5432',  
     }
 }
 
@@ -118,3 +125,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = 'fmsapp:dashboard'
+MEDIA_URL = '/media/' #This is just for url i.e https://l.me/media/l.jpg
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #This is the folder the image will be uploaded

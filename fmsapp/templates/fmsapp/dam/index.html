@@ -1,0 +1,34 @@
+{% extends 'fmsapp/layout.html' %}
+{% load static %}
+{% block title %}
+Dams Information
+{% endblock title %}
+
+{% block contents %}
+
+  <section class="container mt-2">
+    <div class="text-right"><a href=" {% url 'fms:create_dam' %} " class="btn rounded-0  btn-info"><i class="fas fa-plus"></i> New Dam</a></div>
+  <hr>
+
+    <div class="row ml-2 mr-2">
+     {% for dl in damlist  %}
+     
+        <div class="col-lg-6 p-4 card rounded-0">
+            <div class="card-header bg-danger  text-light">
+                <p class='lead text-center'>{{dl.name}}</p><hr>
+            </div><br>  
+            <img src=" {{dl.image.url}}" class='card-img-top' alt=""><hr>
+            <p><strong>Total Fishes: &emsp;</strong> {{dl.no_fishes}} </p><hr>
+            <p><strong>Categories: &emsp;</strong> {{dl.fish_categories}} </p><hr>
+            <p class='justify'><strong>Location:</strong> {{dl.location}} </p><hr>
+            <p><strong>About:</strong> {{dl.about}}</p><hr> 
+            <div class="text-center">
+                <a href="{% url 'fms:dam_edit' pk=dl.id %}"  class="btn btn-block btn-danger"> <i class="fas fa-edit"></i> &emsp; Update </a>
+            </div>
+        </div>  
+
+     {% endfor %}
+    </div>
+  </section>
+
+{% endblock contents  %}
