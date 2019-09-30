@@ -27,11 +27,16 @@ class StaffForm(forms.ModelForm):
         model = Staff
         fields = "__all__"
         widgets={
+            
             'first_name':forms.TextInput(attrs={'class':'form-control','placeholder':'First Name'}),
             'last_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Last Name'}),
-            'stipend':forms.TextInput(attrs={'class':'form-control','placeholder':'Mobile Number'}),
+            'stipend':forms.TextInput(attrs={'class':'form-control','placeholder':'Salary'}),
             'mobile_number':forms.TextInput(attrs={'class':'form-control','placeholder':'Mobile Number'}),
-            'work_description':forms.TextInput(attrs={'class':'form-control','placeholder':'Work Description'})
+            'state':forms.Select(attrs={'class':'form-control','placeholder':'Salary'}),
+            'country':forms.TextInput(attrs={'class':'form-control','placeholder':'country'}),
+            'department':forms.Select(attrs={'class':'form-control','placeholder':''}),
+            'work_description':forms.Textarea(attrs={'class':'form-control','placeholder':'Work Description','rows':2, 'cols':4}),
+            'image':forms.FileInput(attrs={'class':'form-control'}),
         }
 
 class DepartmentForm(forms.ModelForm):

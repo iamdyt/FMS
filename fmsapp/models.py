@@ -27,16 +27,25 @@ class Department (models.Model):
     
 
 class Staff (models.Model):
-
+    STATES = (('edo','Edo'),('ekiti','Ekiti'),('kogi','Kogi'),('kwara','Kwara'),('lagos','Lagos'),
+        ('ogun','Ogun'),('ondo','Ondo'),('osun','Osun'),('oyo','Oyo'),)
+    image = models.ImageField(blank=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     stipend = models.CharField(max_length=10)
     mobile_number = models.CharField(max_length=11)
-    department = models.OneToOneField(Department, on_delete=models.SET_NULL, null=True)
+    state = models.CharField(max_length=20, choices=STATES, default='edo')
+    country = models.CharField(max_length=20, default='Nigeria')
+    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
     work_description = models.TextField(max_length=1000)
 
     def __str__(self):
         return self.first_name+'-'+self.last_name
+
+    def get_absolute_url(self):
+        return reverse("fms:staff_single", kwargs={"pk": self.pk})
+    
+    
 
 class User (AbstractUser):
     image = models.ImageField(blank=True)

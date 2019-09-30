@@ -1,12 +1,12 @@
 {% extends 'fmsapp/layout.html' %}
 {% load static %}
-{% block title %} New Dam{% endblock title %}
+{% block title %} New Staffer{% endblock title %}
 {% block contents %}
     <section class="row">
         <div class="col-lg-6 offset-lg-3">
             <div class="card">
                 <div class="card-body">
-                <p class="lead text-center">New Dam</p><hr>
+                <p class="lead text-center">New Staffer</p><hr>
                     <form action="" class="form-group" method='POST' enctype='multipart/form-data'>
                         {% csrf_token %}
                         {{form.as_p}}

@@ -1,33 +1,51 @@
 {% extends 'fmsapp/layout.html' %}
 {% load static %}
 {% block title %}
-Dams Information
+All Staff
 {% endblock title %}
 
 {% block contents %}
 
-  <section class="container mt-2">
-    <div class="text-right"><a href=" {% url 'fms:create_dam' %} " class="btn rounded-0  btn-info"><i class="fas fa-plus"></i> New Dam</a></div>
-  <hr>
-
-    <div class="row ml-2 mr-2">
-     {% for dl in damlist  %}
+  <section class="container">
+    <div class=" p-3 mb-3">
+      
+      {% comment %} <div class=" text-center">
+        <a href="{% url 'fms:create_staff' %}" class="btn btn-block btn-dark rounded"> <i class="fas fa-plus"></i> Enrol new Staff</a>
+        
+      </div>    {% endcomment %}
+    </div>
+    <div class="row">
+     {% for staff in staffs  %}
      
-        <div class="col-lg-6 p-4 card rounded-0">
-            <div class="card-header bg-danger  text-light">
-                <p class='lead text-center'>{{dl.name}}</p><hr>
-            </div><br>  
-            <img src=" {{dl.image.url}}" class='card-img-top' alt=""><hr>
-            <p><strong>Total Fishes: &emsp;</strong> {{dl.no_fishes}} </p><hr>
-            <p><strong>Categories: &emsp;</strong> {{dl.fish_categories}} </p><hr>
-            <p class='justify'><strong>Location:</strong> {{dl.location}} </p><hr>
-            <p><strong>About:</strong> {{dl.about}}</p><hr> 
-            <div class="text-center">
-                <a href="{% url 'fms:dam_edit' pk=dl.id %}"  class="btn btn-block btn-danger"> <i class="fas fa-edit"></i> &emsp; Update </a>
-            </div>
-        </div>  
-
+       <div class="col-lg-4">
+        <div class="card">
+        <div class="card-header rounded-0 bg-dark">
+          <p class="lead text-center">Profile and Bio</p>
+        </div>
+      <div class="card-body">
+        <div class="mx-auto d-block">
+          <img width=80 height=80 class=" rounded-circle img-fluid mx-auto d-block" src="{{staff.image.url}}" alt="{{staff.name}} image">
+          <h5 class="text-sm-center mt-2 mb-1"> {{staff.first_name | capfirst}} {{staff.last_name | capfirst}} </h5>
+          <div class="location text-sm-center"><i class="fa fa-map-marker"></i> {{staff.state| capfirst}}, {{staff.country|capfirst }}</div>
+          <div class="location text-sm-center"><i class="fa fa-building"></i> {{staff.department| capfirst}} Department</div>
+        </div>
+        <hr>
+      <div class="card-text">
+        <strong>Work Description:</strong>
+        <p>{{staff.work_description | truncatechars:40}}</p>
+      </div>
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'fms:staff_single' pk=staff.id %}"><i class=" text-info fas fa-eye"></i></a> &emsp;
+        <a href="{% url 'fms:staff_edit' pk=staff.id %}"><i class=" text-primary fas fa-edit"></i></a>&emsp;
+        <a href="{% url 'fms:staff_delete' pk=staff.id %}"><i class=" text-danger fas fa-trash"></i></a> &emsp;
+        <a href="{% url 'fms:create_staff' %}" class=""> <i class="fas fa-plus"></i> Enrol New Staff</a>
+      </div>
+    </div>
+    </div>
+     
      {% endfor %}
+    
     </div>
   </section>
 

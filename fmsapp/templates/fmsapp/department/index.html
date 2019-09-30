@@ -6,15 +6,17 @@
 
 {% block contents %}
 
-  <section class="container card mt-2">
+  <section class="container">
+    <p class="text-center lead bg-dark p-3 text-light shadow-sm">  {{dpt.name}} Department & Associated Staffers </p>
+  <hr>
     <div class="row mt-4">
       <div class="col-lg-6">
         <div class="card shadow-sm">
           <div class="card-header">
             <div class="card-text"> 
               {{dpt.name }} &emsp; &emsp;
-              <a href=" {% url 'fms:dept_edit' pk=dpt.pk %} "> <i class=" right text-info fas fa-edit"></i></a>&emsp; 
-              <a href="{% url 'fms:dept_delete' pk=dpt.pk %}"><i class="text-danger fas fa-trash"></i></a>
+              <a href=" {% url 'fms:dept_edit' pk=dpt.pk %} " class='text-info'> <i class=" right text-info fas fa-edit"></i> Edit</a>&emsp; 
+              <a href="{% url 'fms:dept_delete' pk=dpt.pk %}" class='text-danger'><i class="text-danger fas fa-trash"></i> Delete </a>
             </div><hr>
           </div>
           <div class="card-body">
@@ -30,7 +32,18 @@
             <div class="card-text"> Associated Staff</div><hr>
           </div>
           <div class="card-body">
-            {{dpt.description}}
+            {% if staffer %}
+              
+              {% for stf in staffer  %}
+                <div class="list-group-item"><img src="{{stf.image.url}}" width=50 height=50 class='img-fluid rounded-circle' alt="">  <span class='float-right'> <strong>{{stf.last_name |capfirst}} {{stf.first_name |capfirst}}  </strong>  <br>{{stf.mobile_number}} 
+                <a class='btn btn-info btn-sm ' href="{% url 'fms:staff_single' pk=stf.id %}"> <small>view</small></a>
+                </span> </div>
+              {% endfor %}
+
+            {% else %}
+              <p class="lead text-center">No Associated Staff. Please Update the Staff Info to add department</p>
+            {% endif %}
+           
           </div>
          
         </div>

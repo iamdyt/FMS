@@ -1,7 +1,8 @@
+{% load static %}
 <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="images/icon/logo.png" alt="FMS" />
+                    <img src="{% static 'fmsapp/images/icon/logo.png' %}" alt="FMS" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -17,8 +18,8 @@
                                 <i class="fas fa-chart-bar"></i>Dam</a>
                         </li>
                          <li class="has-sub">
-                            <a class="js-arrow" href="#"><i class="fas fa-copy"></i>Departments</a>
-                                <a href=" {% url 'fms:create_dept' %}"> <i class="fas fa-plus"> </i> New Departments</a>
+                            <a class="js-arrow" href="#"><i class="far fa-copy"></i>Departments</a>
+                                <a href=" {% url 'fms:create_dept' %}"> <i class="fas fa-plus"> </i> New Department</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                               {% for d in dept  %}
                                 <li>
@@ -28,16 +29,16 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="form.html">
-                               <i class="far fa-check-square"></i>Staff</a>
+                            <a href="{% url 'fms:all_staff' %}">
+                               <i class="far fa-user"></i>Staff</a>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                                <i class="far fa-folder"></i>Fish</a>
                         </li>
                         <li>
                             <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                                <i class="fas fa-tasks"></i>Inventory</a>
                         </li>
                       
                     </ul>

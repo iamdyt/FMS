@@ -7,25 +7,28 @@ Dams Information
 {% block contents %}
 
   <section class="container mt-2">
-    <div class="text-right"><a href=" {% url 'fms:create_dam' %} " class="btn rounded-0  btn-info"><i class="fas fa-plus"></i> New Dam</a></div>
-  <hr>
-
     <div class="row ml-2 mr-2">
      {% for dl in damlist  %}
-     
-        <div class="col-lg-6 p-4 card rounded-0">
-            <div class="card-header bg-danger  text-light">
-                <p class='lead text-center'>{{dl.name}}</p><hr>
-            </div><br>  
-            <img src=" {{dl.image.url}}" class='card-img-top' alt=""><hr>
-            <p><strong>Total Fishes: &emsp;</strong> {{dl.no_fishes}} </p><hr>
-            <p><strong>Categories: &emsp;</strong> {{dl.fish_categories}} </p><hr>
-            <p class='justify'><strong>Location:</strong> {{dl.location}} </p><hr>
-            <p><strong>About:</strong> {{dl.about}}</p><hr> 
-            <div class="text-center">
-                <a href="{% url 'fms:dam_edit' pk=dl.id %}"  class="btn btn-block btn-danger"> <i class="fas fa-edit"></i> &emsp; Update </a>
-            </div>
-        </div>  
+             <div class="col-lg-6">
+                <div class="card">
+                  <img class="card-img-top" src="{{dl.image.url}}" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title mb-3">{{dl.name}} <span class="text-right"> &emsp; &emsp; &emsp; &emsp; &emsp;Total Fishes: &nbsp; {{dl.no_fishes}} </span> </h4>
+                    <p class="card-text"></p>
+                    <p class="lead text-justify">{{dl.about}}</p>
+                  </div>
+
+                  <div class="card-footer rounded-0 bg-dark">
+                    <span class="float-left">
+                      <a href=" {% url 'fms:create_dam' %} " class="btn rounded btn-block  btn-danger"><i class="fas fa-plus"></i> New Dam</a>
+                    </span>
+
+                     <span class="float-right">
+                      <a href="{% url 'fms:dam_edit' pk=dl.id %}"  class="btn  btn-secondary"> <i class="fas fa-edit"></i> &emsp; Update </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
 
      {% endfor %}
     </div>

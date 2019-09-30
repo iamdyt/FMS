@@ -14,8 +14,12 @@ urlpatterns = [
    path("dashboard/dam/<int:pk>/edit/", views.DamEdit.as_view(), name="dam_edit"),
 
    #Staff Path
-   #path("dashboard/staff/new/", .as_view(), name="create_staff"),
-   #path("dashboard/staff/", .as_view(), name="all_staff"),
+   path("dashboard/staff/new/",views.StaffNew.as_view(), name="create_staff"),
+   path("dashboard/staff/<int:pk>/single/", views.StaffSingle.as_view(), name="staff_single"),
+   path("dashboard/staff/<int:pk>/edit/", views.StaffEdit.as_view(), name="staff_edit"),
+   path("dashboard/staff/<int:pk>/delete/", views.StaffDestroy.as_view(), name="staff_delete"),
+   path("dashboard/staff/", views.Staffers.as_view(), name="all_staff"),
+
 
    #Department Routes
 

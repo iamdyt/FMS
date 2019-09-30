@@ -1,0 +1,39 @@
+{% extends 'fmsapp/layout.html' %}
+{% load static %}
+{% block title %}
+{{staffer.first_name}} | Info
+{% endblock title %}
+
+{% block contents %}
+
+  <section class="container mt-2">
+
+    <div class="row ml-2 mr-2">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <div class="card-header">
+            <img src="{{staffer.image.url}}" width=70 height=70 class='rounded-circle img-fluid' alt=""> &nbsp; {{staffer.last_name}} - {{staffer.first_name}}
+            <small> {{staffer.mobile_number}} </small> 
+          </div>
+
+          <div class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item"><label for="fname">First Name:</label> <span class=" float-right label">{{staffer.first_name | capfirst}}</span></li>
+              <li class="list-group-item"><label for="fname">Last Name:</label> <span class=" float-right label">{{staffer.last_name | capfirst}}</span></li>
+              <li class="list-group-item"><label for="stipend">Salary:</label> <span class=" float-right label">{{staffer.stipend}}</span></li>
+              <li class="list-group-item"><label for="mobile">Mobile Number:</label> <span class=" float-right label">{{staffer.mobile_number}}</span></li>
+              <li class="list-group-item"><label for="state">State:</label> <span class=" float-right label">{{staffer.state | capfirst}}</span></li>
+              <li class="list-group-item"><label for="country">Country:</label> <span class=" float-right label">{{staffer.country | capfirst}}</span></li>
+              <li class="list-group-item"><label for="department">Department:</label> <span class=" float-right label">{{staffer.department | capfirst}}</span></li>
+              <li class="list-group-item"><label for="description">Work Decription:</label> <span class=" float-right label">{{staffer.work_description}}</span></li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <a href="{% url 'fms:staff_edit' pk=staffer.id %}" class="btn btn-block btn-info">Modify</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock contents  %}
