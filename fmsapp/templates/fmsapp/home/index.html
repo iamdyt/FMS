@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{%static 'fmsapp/css/bootstrap.min.css' %}">
+    
+    <link rel="stylesheet" href="{%static 'fmsapp/css/style.css' %}">
+    <title>Fish Farm Management System</title>
+</head>
+<body class=" maincontainer ">
+
+    <div id="navbar">
+            <nav class="navbar navbar-expand-lg mt-3 ml-5">
+                    <h3 class="text-light">Home</h3>
+                    <h3 class="text-warning ml-auto"> FEDERAL POLYTECHNIC EDE</h3>
+            </nav>
+    </div>
+   
+   <!-- First section-->
+   <div class="container-fluid  mt-4">
+       <div class="row">
+           <div class="col-12"><h1 class="text-center display-4 text-light">FISH FARM <br> MANAGEMENT SYSTEM</h1></div>
+           <div class="col-12 text-center"><a href="{% url 'fms:register' %}" class="btn btn-warning p-3 rounded-0">Registration</a>  <a href="{% url 'fms:login' %}" class=" p-3 rounded-0 btn btn-warning">Login</a> <a href="{% url 'fms:login' %}" class=" p-3 rounded-0 btn btn-warning">Administrator</a></div>
+       </div>
+   </div>
+
+   <!-- Second section-->
+
+   
+    <script src="{%static 'fmsapp/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

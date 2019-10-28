@@ -7,6 +7,9 @@ from django.views.generic import CreateView,ListView,DetailView,UpdateView,View
 from .forms import LoginForm, DamForm,StaffForm, DepartmentForm
 
 # Create your views here.
+
+class Index(TemplateView):
+    template_name = 'fmsapp/home/index.html'
 class Dashboard(TemplateView):
     template_name = 'fmsapp/dashboard/index.html'
     def get_context_data(self, **kwargs):
@@ -19,7 +22,7 @@ class Dashboard(TemplateView):
     
 
 class Login(LoginView):
-    template_name = 'fmsapp/login.html'
+    template_name = 'fmsapp/home/login.html'
     form_class = LoginForm
     model = get_user_model()
     def get_success_url(self):

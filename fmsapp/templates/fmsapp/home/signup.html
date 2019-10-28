@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{%static 'fmsapp/css/bootstrap.min.css' %}">
+        
+        <link rel="stylesheet" href="{%static 'fmsapp/css/style.css' %}">
+    <title>Staff Registration</title>
+</head>
+<body class="bgreg">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-4 offset-lg-4">
+               <div class="card rounded-0 shadow-sm">
+                   <div class="card-body">
+                       <p class="lead text-center text-secondary">STAFFERS REGISTRATION</p><hr width="100%">
+                        <form action="" class="form-group mt-5">
+                            
+                                <input type="text" class="form-control p-4  mb-3" placeholder="First-Name" name="fname">
+                                <input type="text" class="form-control p-4  mb-3" placeholder="Last Name" name="sname">
+                                <input type="text" class="form-control p-4  mb-3" placeholder="Username" name="uname">
+                                <input type="password" class="form-control p-4  mb-3" placeholder="Password" name="fname">
+                                <div class="text-center">
+                                    <button class="btn btn-block btn-warning">Register</button>
+                                </div>
+                            </form>
+                   </div>
+                   <div class="card-footer text-center"> Already a Member &nbsp; <a href="{% url 'fms:login' %}" class=""> Login Here</a></div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <script src="{%static 'fmsapp/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

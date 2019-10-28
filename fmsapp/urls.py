@@ -4,7 +4,9 @@ from . import views
 app_name = 'fmsapp'
 
 urlpatterns = [
-    path('', views.Login.as_view(), name='loginform' ),
+    path('', views.Index.as_view(), name='index' ),
+    path('administrator/login/', views.Login.as_view(), name='login'),
+    path('administrator/register/', views.Login.as_view(), name='register'),
     path("dashboard/", views.Dashboard.as_view(), name="dashboard"),
    
    #Dam Routes

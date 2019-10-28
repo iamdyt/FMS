@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "Lexend Deca";
+    src: url("../fonts/LexendDeca-Regular.ttf");
+    }
+
+* {
+    font-family: 'Lexend Deca';
+}
+
+.maincontainer{
+    background-image: url('../images/background.jpg');
+    background-size:cover;
+    background-position: center;
+    background-repeat:no-repeat;
+    height:100%;
+    visibility:initial;
+    width:100%;
+    
+}
+
+h1{
+    font-weight: bolder;
+}
+
+.bgreg{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,24,149,1) 35%, rgba(0,212,255,1) 100%);
+}
