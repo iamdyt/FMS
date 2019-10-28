@@ -8,6 +8,7 @@ Dams Information
 
   <section class="container mt-2">
     <div class="row ml-2 mr-2">
+      {%  if  damlist%}
      {% for dl in damlist  %}
              <div class="col-lg-6">
                 <div class="card">
@@ -31,6 +32,14 @@ Dams Information
               </div>
 
      {% endfor %}
+     {% else %}
+     <div class="text-center">
+       <p class="display-info">No Dam Information</p>
+       <a href="{% url 'fms:create_dam' %}" class="btn text-center btn-outline-info">
+         Create a new Dam
+       </a>
+     </div>
+     {%endif%}
     </div>
   </section>
 

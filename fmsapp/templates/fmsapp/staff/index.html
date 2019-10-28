@@ -15,6 +15,7 @@ All Staff
       </div>    {% endcomment %}
     </div>
     <div class="row">
+      {%if staffs %}
      {% for staff in staffs  %}
      
        <div class="col-lg-4">
@@ -45,6 +46,14 @@ All Staff
     </div>
      
      {% endfor %}
+
+      {% else %}
+      <div>
+          <p class="display-4 ml-4 text-danger">No Staff in the Database</p><br>
+          
+          <a href="{% url 'fms:create_staff' %}" class="btn ml-4  btn-block text-center btn-outline-info">Add Staff</a>
+      </div>
+      {% endif %}
     
     </div>
   </section>
