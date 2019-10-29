@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django import forms
-from . models import Dam, Staff, Department,Fish,TimeLine
+from . models import Dam, Staff, Department,Fish,TimeLine,Sales,Debtors
 from django.contrib.auth import get_user_model
 
 
@@ -79,9 +79,35 @@ class HarvestForm(forms.ModelForm):
         model = TimeLine
         fields = '__all__'
         widgets = {
-            'number':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Number of Fish Sold'}),
+            'number':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Number of Fish Harvested'}),
             'dam':forms.TextInput(attrs={'class':'form-control','placeholder':'From which Dam'}),
-            'amount':forms.TextInput(attrs={'class':'form-control','placeholder':'Amount'}),
             'others':forms.Textarea(attrs={'class':'form-control','placeholder':'Other Note here'})
+        }
+
+class SalesForm(forms.ModelForm):
+    class Meta:
+        model = Sales
+        fields = '__all__'
+        widgets = {
+            'types':forms.TextInput(attrs={'class':'form-control','placeholder':'e.g Tilapia'}),
+            'amount':forms.NumberInput(attrs={'class':'form-control','placeholder':'Price per one per weight'}),
+            'weight':forms.NumberInput(attrs={'class':'form-control','placeholder':'Fish weight'}),
+            'quantity':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Number of Fish'}),
+            'price':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Amount to be paid'})
+
+        }
+
+class DebtorsForm(forms.ModelForm):
+    class Meta:
+        model = Debtors
+        fields = '__all__'
+        widgets = {
+            'name':forms.TextInput(attrs={'class':'form-control','placeholder':'Full Name'}),
+            'file_no':forms.TextInput(attrs={'class':'form-control','placeholder':'Staff-file No'}),
+            'quantity':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Number of Fish'}),
+            'department':forms.TextInput(attrs={'class':'form-control','placeholder':'Staffer Department' }),
+            'amount':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Amount to be paid'}),
+            'signature':forms.ClearableFileInput(attrs={'class':'form-control'})
+
         }
         

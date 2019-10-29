@@ -65,7 +65,6 @@ class Fish(models.Model):
 class TimeLine(models.Model):
     number = models.IntegerField()
     dam = models.CharField(max_length=2)
-    amount = models.CharField(max_length=12)
     others = models.TextField(max_length=9000)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -73,3 +72,22 @@ class TimeLine(models.Model):
     def __str__(self):
         return self.name
     
+class Sales (models.Model):
+    types = models.CharField(max_length=12)
+    weight = models.IntegerField()
+    amount = models.IntegerField()
+    price = models.IntegerField()
+    quantity = models.IntegerField()
+    created = models.DateField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.types
+
+class Debtors (models.Model):
+    name = models.CharField(max_length=90)
+    file_no = models.CharField(max_length=50)
+    quantity = models.IntegerField()
+    department = models.CharField(max_length=50)
+    amount = models.IntegerField()
+    signature = models.ImageField()
+    created = models.DateField(auto_now_add=True, null=True)

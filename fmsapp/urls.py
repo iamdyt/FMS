@@ -42,7 +42,20 @@ urlpatterns = [
    #Harvest TimeLine
    path("dashboard/harvest/all/",views.AllHarvest.as_view(), name="harvests"),
    path("dashboard/harvest/add/",views.AddHarvest.as_view(), name="add_harvest"),
-   path("dashboard/harvest/<int:pk>/delete/",views.EditHarvest.as_view(), name="edit_harvest"),
-   path("dashboard/harvest/<int:pk>/edit/",views.DeleteHarvest.as_view(), name="delete_harvest")
+   path("dashboard/harvest/<int:pk>/edit/",views.EditHarvest.as_view(), name="edit_harvest"),
+   path("dashboard/harvest/<int:pk>/delete/",views.DeleteHarvest.as_view(), name="delete_harvest"),
+   path("dashboard/harvest/<int:pk>/single/",views.SingleHarvest.as_view(), name="single_harvest"),
+
+   #Sales Routes
+   path("dashboard/sales/all/",views.SalesAll.as_view(), name="sales"),
+   path("dashboard/sales/add/",views.SalesAdd.as_view(), name="create_sale"),
+   path("dashboard/sales/<int:pk>/edit/",views.SalesUpdate.as_view(), name="edit_sale"),
+   path("dashboard/sales/<int:pk>/delete/",views.DeleteSales.as_view(), name="delete_sale"),
+
+   #Credit Sales
+   path("dashboard/credit-sales/all/",views.DebtorsAll.as_view(), name="debts"),
+   path("dashboard/credit-sales/add/",views.DebtorsAdd.as_view(), name="create_debt"),
+   path("dashboard/credit-sales/<int:pk>/edit/",views.DebtorsUpdate.as_view(), name="edit_debt"),
+   path("dashboard/credit-sales/<int:pk>/delete/",views.DeleteDebtors.as_view(), name="delete_debt")
 
 ]

@@ -1,13 +1,13 @@
 {% extends 'fmsapp/layout.html' %}
 {% load static %}
-{% block title %} Edit Harvest TimeLine{% endblock title %}
+{% block title %} History and TimeLine{% endblock title %}
 {% block contents %}
     <section class="row">
-        <div class="col-lg-6 offset-lg-3">
+        <div class="col-lg-6 offset-lg-3 shadow p-4">
             <div class="card">
                 <div class="card-body">
-                <p class="text-center lead">Update Harvest Timeline</p><hr>
-                    <form action="" class="form-group" method='POST' enctype='multipart/form-data'>
+                <p class="lead text-center">Add Sales Record</p><hr>
+                    <form  class="form-group" method='POST' enctype='multipart/form-data'>
                         {% csrf_token %}
                         {{form.as_p}}
                         <button class="btn btn-success btn-block mt-3">Submit</button>

@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect,resolve_url
 from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model,logout
-from . models import Dam,Department,Staff, Fish, TimeLine
+from . models import Dam,Department,Staff, Fish, TimeLine,Sales,Debtors
 from django.contrib.auth.views import LoginView, TemplateView
 from django.views.generic import CreateView,ListView,DetailView,UpdateView,View
-from .forms import LoginForm, DamForm,StaffForm, DepartmentForm,RegisterForm,FishForm,HarvestForm
+from .forms import LoginForm, DamForm,StaffForm,DebtorsForm, DepartmentForm,RegisterForm,FishForm,HarvestForm,SalesForm
 
 # Create your views here.
 
@@ -177,3 +177,56 @@ class DeleteHarvest(View):
         harvest = TimeLine.objects.get(pk=pk)
         harvest.delete()
         return redirect('fms:harvests')
+
+class SingleHarvest(DetailView):
+    model = TimeLine
+    template_name = 'fmsapp/timeline/single.html'
+    context_object_name = 'harvest'
+
+# Sales All
+class SalesAdd(CreateView):
+    model = Sales
+    form_class = SalesForm
+    template_name = 'fmsapp/sales/create.html'
+    success_url = reverse_lazy('fms:sales')
+class SalesAll(ListView):
+    model = Sales
+    template_name = 'fmsapp/sales/index.html'
+    context_object_name = 'sales'
+
+class SalesUpdate (UpdateView):
+    model = Sales
+    form_class = SalesForm
+    template_name = 'fmsapp/sales/edit.html'
+    success_url = reverse_lazy ('fms:sales')
+
+class DeleteSales(View):
+
+    def get(self, request,pk):
+        sale = Sales.objects.get(pk=pk)
+        sale.delete()
+        return redirect('fms:sales')
+
+#Creditors/Debitors
+class DebtorsAdd(CreateView):
+    model = Debtors
+    form_class = DebtorsForm
+    template_name = 'fmsapp/credit/create.html'
+    success_url = reverse_lazy('fms:debts')
+class DebtorsAll(ListView):
+    model = Debtors
+    template_name = 'fmsapp/credit/index.html'
+    context_object_name = 'debts'
+
+class DebtorsUpdate (UpdateView):
+    model = Debtors
+    form_class = DebtorsForm
+    template_name = 'fmsapp/credit/edit.html'
+    success_url = reverse_lazy ('fms:debts')
+
+class DeleteDebtors(View):
+
+    def get(self, request,pk):
+        debt = Debtors.objects.get(pk=pk)
+        debt.delete()
+        return redirect('fms:debts')
