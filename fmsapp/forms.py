@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django import forms
-from . models import Dam, Staff, Department
+from . models import Dam, Staff, Department,Fish,TimeLine
 from django.contrib.auth import get_user_model
 
 
@@ -61,3 +61,27 @@ class DepartmentForm(forms.ModelForm):
             'name':forms.TextInput(attrs={'class':'form-control','placeholder':'Department Name'}),
             'description':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Description'})
         }
+
+class FishForm(forms.ModelForm):
+    class Meta:
+        model = Fish
+        fields = '__all__'
+        widgets = {
+            'name':forms.TextInput(attrs={'class':'form-control','placeholder':'Fish Name'}),
+            'types':forms.TextInput(attrs={'class':'form-control mb-2','placeholder':'Fish Type'}),
+            'HarvestDate':forms.TextInput(attrs={'class':'form-control mb-3 ','placeholder':'Harvest Date'}),
+            'total':forms.NumberInput(attrs={'class':'form-control mb-3','placeholder':'Total'}),
+            'ímage':forms.FileInput(attrs={'class':'form-control mt-2'})
+        }
+
+class HarvestForm(forms.ModelForm):
+    class Meta:
+        model = TimeLine
+        fields = '__all__'
+        widgets = {
+            'number':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Number of Fish Sold'}),
+            'dam':forms.TextInput(attrs={'class':'form-control','placeholder':'From which Dam'}),
+            'amount':forms.TextInput(attrs={'class':'form-control','placeholder':'Amount'}),
+            'others':forms.Textarea(attrs={'class':'form-control','placeholder':'Other Note here'})
+        }
+        

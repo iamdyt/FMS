@@ -55,4 +55,21 @@ class Fish(models.Model):
     name = models.CharField(max_length=50)
     types = models.CharField(max_length=50)
     total = models.IntegerField()
+    immersiveDate = models.DateField(auto_now_add=True, null=True)
+    HarvestDate = models.CharField(max_length=18, null=True)
+    image = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+class TimeLine(models.Model):
+    number = models.IntegerField()
+    dam = models.CharField(max_length=2)
+    amount = models.CharField(max_length=12)
+    others = models.TextField(max_length=9000)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
     

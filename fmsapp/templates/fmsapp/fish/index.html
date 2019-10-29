@@ -1,0 +1,61 @@
+{% extends 'fmsapp/layout.html' %}
+{% load static %}
+{% block title %}
+All Fishes
+{% endblock title %}
+
+{% block contents %}
+
+  <section class="container">
+    <div class=" p-3">
+    </div>
+    <div class="row">
+      {%if fishes %}
+     {% for fish in fishes  %}
+     
+       <div class="col-lg-12">
+        <h2 class="title-1 m-b-25">All Fishes</h2>
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Imm.Date</th>
+                                                <th>Exp.Harv.Date</th>
+                                                <th class="text-right">Total</th>
+                                                <th>Manage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                <td> <img src="{{fish.image.url}}" width=50 height=50 alt="image" class="  img-fluid"> </td>
+                                                <td>{{fish.name |capfirst}}</td>
+                                                <td>{{fish.types |capfirst}}</td>
+                                                <td>{{fish.immersiveDate}}</td>
+                                                <td>{{fish.HarvestDate}}</td>
+                                                <td class="text-right">{{fish.total}}</td>
+                                                <td><span><a href="{% url 'fms:edit_fish' pk=fish.id %}"><i class="fas text-info fa-edit"></i></a></span> &emsp; <span><a href="{% url 'fms:delete_fish' pk=fish.id %}"><i class="fas text-danger fa-trash"></i></a></span></td>
+                                            
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+      </div>
+     
+     {% endfor %}
+
+      {% else %}
+      <div>
+          <p class="display-4 ml-4 text-danger">Fish Database Empty</p><br>
+          
+          <a href="{% url 'fms:create_fish' %}" class="btn ml-4  btn-block text-center btn-outline-info">Add Fish</a>
+      </div>
+      {% endif %}
+    
+    </div>
+  </section>
+
+{% endblock contents  %}

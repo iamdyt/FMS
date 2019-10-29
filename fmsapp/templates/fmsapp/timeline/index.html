@@ -1,0 +1,59 @@
+{% extends 'fmsapp/layout.html' %}
+{% load static %}
+{% block title %}
+All Fishes
+{% endblock title %}
+
+{% block contents %}
+
+  <section class="container">
+    <div class=" p-3">
+    </div>
+    <div class="row">
+      {%if timelines %}
+     {% for tm in timelines  %}
+     
+       <div class="col-lg-12">
+        <h2 class="title-1 m-b-25">All Fishes</h2>
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>Total Sold</th>
+                                                <th>Amount</th>
+                                                <th>Date</th>
+                                                <th>Updated</th>
+                                                <th>Manage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                
+                                                <td>{{tm.number |capfirst}}</td>
+                                                <td>{{tm.dam |capfirst}}</td>
+                                                <td>{{tm.amount}}</td>
+                                                <td>{{tm.created}}</td>
+                                                <td class="text-right">{{tm.updated}}</td>
+                                                <td><span><a href="{% url 'fms:edit_harvest' pk=tm.id %}"><i class="fas text-info fa-edit"></i></a></span> &emsp; <span><a href="{% url 'fms:delete_harvest' pk=tm.id %}"><i class="fas text-danger fa-trash"></i></a></span></td>
+                                            
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+      </div>
+     
+     {% endfor %}
+
+      {% else %}
+      <div class='text-center'>
+          <p class="display-4 ml-4 text-center text-danger">No Harvest/Sales History</p><br>
+          
+          <a href="{% url 'fms:add_harvest' %}" class="btn ml-4  btn-block text-center btn-outline-info">Add History</a>
+      </div>
+      {% endif %}
+    
+    </div>
+  </section>
+
+{% endblock contents  %}

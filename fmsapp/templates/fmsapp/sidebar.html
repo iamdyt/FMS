@@ -30,15 +30,15 @@
                         </li>
                         <li>
                             <a href="{% url 'fms:all_staff' %}">
-                               <i class="far fa-user"></i>Staff</a>
+                               <i class="far fa-user"></i>Staff / Workers</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="far fa-folder"></i>Fish</a>
+                            <a href="{% url 'fms:all_fish' %}">
+                                <i class="far fa-folder"></i>Fish Record</a>
                         </li>
                         <li>
-                            <a href="map.html">
-                                <i class="fas fa-tasks"></i>Inventory</a>
+                            <a href="{% url 'fms:harvests' %}">
+                                <i class="fas fa-clock"></i>Harvest Timeline</a>
                         </li>
                       
                     </ul>

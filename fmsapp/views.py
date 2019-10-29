@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect,resolve_url
 from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model,logout
-from . models import Dam,Department,Staff
+from . models import Dam,Department,Staff, Fish, TimeLine
 from django.contrib.auth.views import LoginView, TemplateView
 from django.views.generic import CreateView,ListView,DetailView,UpdateView,View
-from .forms import LoginForm, DamForm,StaffForm, DepartmentForm,RegisterForm
+from .forms import LoginForm, DamForm,StaffForm, DepartmentForm,RegisterForm,FishForm,HarvestForm
 
 # Create your views here.
 
@@ -124,3 +124,56 @@ class DepartmentDestroy(View):
         dept = Department.objects.get(pk=pk)
         dept.delete()
         return redirect('fms:dashboard')
+
+#Fish Views
+
+class AddFish(CreateView):
+    model = Fish
+    form_class = FishForm
+    template_name = 'fmsapp/fish/create.html'
+    success_url = reverse_lazy('fms:all_fish')
+
+class UpdateFish(UpdateView):
+    model = Fish
+    form_class = FishForm
+    template_name = 'fmsapp/fish/edit.html'
+    success_url = reverse_lazy('fms:dashboard')
+
+class ListFish(ListView):
+    model = Fish
+    template_name = 'fmsapp/fish/index.html'
+    context_object_name = 'fishes'
+
+
+class FishDestroy(View):
+
+    def get(self, request,pk):
+        fish = Fish.objects.get(pk=pk)
+        fish.delete()
+        return redirect('fms:dashboard')
+
+#Harvest Views
+class AllHarvest(ListView):
+    model = TimeLine
+    template_name = 'fmsapp/timeline/index.html'
+    context_object_name = 'timelines'
+
+class AddHarvest(CreateView):
+    model = TimeLine
+    template_name = 'fmsapp/timeline/create.html'
+    form_class = HarvestForm
+    success_url = reverse_lazy('fms:harvests')
+
+class EditHarvest(UpdateView):
+    model = TimeLine
+    template_name = 'fmsapp/timeline/edit.html'
+    form_class = HarvestForm
+    success_url = reverse_lazy ('fms:harvests')
+
+
+class DeleteHarvest(View):
+
+    def get(self, request,pk):
+        harvest = TimeLine.objects.get(pk=pk)
+        harvest.delete()
+        return redirect('fms:harvests')

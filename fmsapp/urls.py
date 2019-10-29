@@ -32,4 +32,17 @@ urlpatterns = [
    path("dashboard/department/<int:pk>/single/",views.DepartmentDetail.as_view(), name="dept_single"),
    path("dashboard/department/<int:pk>/edit/",views.DepartmentUpdate.as_view(), name="dept_edit"),
    path("dashboard/department/<int:pk>/delete/",views.DepartmentDestroy.as_view(), name="dept_delete"),
+
+   #Fish Routes
+   path("dashboard/fish/add/",views.AddFish.as_view(), name="create_fish"),
+   path("dashboard/fish/all/",views.ListFish.as_view(), name="all_fish"),
+   path("dashboard/fish/<int:pk>/edit/",views.UpdateFish.as_view(), name="edit_fish"),
+   path("dashboard/fish/<int:pk>/delete/",views.FishDestroy.as_view(), name="delete_fish"),
+
+   #Harvest TimeLine
+   path("dashboard/harvest/all/",views.AllHarvest.as_view(), name="harvests"),
+   path("dashboard/harvest/add/",views.AddHarvest.as_view(), name="add_harvest"),
+   path("dashboard/harvest/<int:pk>/delete/",views.EditHarvest.as_view(), name="edit_harvest"),
+   path("dashboard/harvest/<int:pk>/edit/",views.DeleteHarvest.as_view(), name="delete_harvest")
+
 ]
