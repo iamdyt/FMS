@@ -49,4 +49,10 @@ class Staff (models.Model):
 
 class User (AbstractUser):
     image = models.ImageField(blank=True)
+
+
+class Fish(models.Model):
+    name = models.CharField(max_length=50)
+    types = models.CharField(max_length=50)
+    total = models.IntegerField()
     

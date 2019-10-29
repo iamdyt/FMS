@@ -17,12 +17,9 @@
                <div class="card rounded-0 shadow-sm">
                    <div class="card-body">
                        <p class="lead text-center text-secondary">STAFFERS REGISTRATION</p><hr width="100%">
-                        <form action="" class="form-group mt-5">
-                            
-                                <input type="text" class="form-control p-4  mb-3" placeholder="First-Name" name="fname">
-                                <input type="text" class="form-control p-4  mb-3" placeholder="Last Name" name="sname">
-                                <input type="text" class="form-control p-4  mb-3" placeholder="Username" name="uname">
-                                <input type="password" class="form-control p-4  mb-3" placeholder="Password" name="fname">
+                        <form method="POST" class="form-group mt-5" enctype='multipart/form-data'>
+                            {% csrf_token %}
+                               {{form.as_p}}
                                 <div class="text-center">
                                     <button class="btn btn-block btn-warning">Register</button>
                                 </div>

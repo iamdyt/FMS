@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect,resolve_url
 from django.urls import reverse_lazy
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model,logout
 from . models import Dam,Department,Staff
 from django.contrib.auth.views import LoginView, TemplateView
 from django.views.generic import CreateView,ListView,DetailView,UpdateView,View
-from .forms import LoginForm, DamForm,StaffForm, DepartmentForm
+from .forms import LoginForm, DamForm,StaffForm, DepartmentForm,RegisterForm
 
 # Create your views here.
 
@@ -31,6 +31,24 @@ class Login(LoginView):
         #self.request.session['']
         url = resolve_url('fmsapp:dashboard')
         return url
+
+class Logout(View):
+    def get(self,request):
+        logout(request)
+        return redirect('fmsapp:login', permanent=True)
+
+class AccountUpdate(UpdateView):
+    model = get_user_model()
+    form_class = RegisterForm
+    template_name = 'fmsapp/account.html'
+    success_url = reverse_lazy('fmsapp:dashboard')
+
+class Register(CreateView):
+    template_name = 'fmsapp/home/signup.html'
+    form_class = RegisterForm
+    model = get_user_model()
+    success_url =  reverse_lazy('fmsapp:login')
+
 
 class DamNew(CreateView):
     model = Dam

@@ -8,34 +8,32 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="{{request.user.image.url}}" alt="John Doe" />
+                                            <img src="{{request.user.image.url}}" alt="{{request.session.username}}" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">{{request.session.username | upper}}</a>
+                                            {{request.session.username | upper}}
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <a href="#">
-                                                        <img src="{{request.user.image.url}}" alt="John Doe" />
-                                                    </a>
+                                                        <img src="{{request.user.image.url}}" alt="{{user.username}}" />
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        {{user.username | capfirst}}
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
+                                                    <a href="{% url 'fmsapp:account_update' pk=user.pk %}">
                                                         <i class="zmdi zmdi-account"></i>Account</a>
                                                 </div>
                                               
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="{% url 'fmsapp:logout' %}">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>

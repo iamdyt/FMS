@@ -1,12 +1,26 @@
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django import forms
 from . models import Dam, Staff, Department
+from django.contrib.auth import get_user_model
 
 
 class LoginForm (AuthenticationForm):
-    username = forms.CharField(max_length=10,widget=forms.TextInput(attrs={'class':'au-input au-input--full', 'placeholder':'Username '}))
-    password = forms.CharField(max_length=20, widget=forms.PasswordInput(attrs={'class':'au-input au-input--full', 'placeholder':'Password '}))
+    username = forms.CharField(max_length=10,widget=forms.TextInput(attrs={'class':'form-control p-4 mb-3', 'placeholder':'Username '}))
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput(attrs={'class':'form-control p-4 mb-3', 'placeholder':'Password '}))
 
+    class Meta:
+        model = get_user_model()
+        fields = '__all__'
+class RegisterForm (UserCreationForm):
+    first_name = forms.CharField(max_length=15, widget=forms.TextInput(attrs={'class':'form-control p-4 mb-3', 'placeholder':'First Name '}))
+    last_name = forms.CharField(max_length=15, widget=forms.TextInput(attrs={'class':'form-control p-4 mb-3', 'placeholder':'Last Name '}))
+    username = forms.CharField(max_length=10,widget=forms.TextInput(attrs={'class':'form-control p-4 mb-3', 'placeholder':'Username '}))
+    password1 = forms.CharField(label='Password',max_length=20, widget=forms.PasswordInput(attrs={'class':'form-control p-4 mb-3', 'placeholder':'Password '}))
+    password2 = forms.CharField(label='Confirm Password',max_length=20, widget=forms.PasswordInput(attrs={'class':'form-control p-4 mb-3', 'placeholder':'Confirm Password '}))
+
+    class Meta:
+        model = get_user_model()
+        fields = ['first_name','last_name','username','password1','password2','image']
 class DamForm (forms.ModelForm):
 
     class Meta:

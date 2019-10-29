@@ -6,8 +6,11 @@ app_name = 'fmsapp'
 urlpatterns = [
     path('', views.Index.as_view(), name='index' ),
     path('administrator/login/', views.Login.as_view(), name='login'),
-    path('administrator/register/', views.Login.as_view(), name='register'),
+    path('administrator/register/', views.Register.as_view(), name='register'),
     path("dashboard/", views.Dashboard.as_view(), name="dashboard"),
+    path("dashboard/logout/", views.Logout.as_view(), name="logout"),
+    path("dashboard/administrator/edit/<int:pk>/", views.AccountUpdate.as_view(), name="account_update"),
+
    
    #Dam Routes
 
