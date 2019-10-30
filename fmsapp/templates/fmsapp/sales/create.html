@@ -1,6 +1,6 @@
 {% extends 'fmsapp/layout.html' %}
 {% load static %}
-{% block title %} History and TimeLine{% endblock title %}
+{% block title %} Sales{% endblock title %}
 {% block contents %}
     <section class="row">
         <div class="col-lg-6 offset-lg-3 shadow p-4">
@@ -18,3 +18,14 @@
         </div>
     </section>
 {% endblock contents %}
+
+{% block skript %}
+    <script>
+        document.getElementById('amt').addEventListener('focusout',function(){
+            let qty = document.getElementById('qty').value
+            let price = document.getElementById('prc')
+            let amt = document.getElementById('amt').value
+            price.value = qty * amt
+        })
+    </script>
+{% endblock skript %}

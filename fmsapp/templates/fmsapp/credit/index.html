@@ -1,5 +1,6 @@
 {% extends 'fmsapp/layout.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}
 All Credit Sales
 {% endblock title %}
@@ -11,7 +12,7 @@ All Credit Sales
     </div>
     <div class="row">
       {%if debts %}
-     {% for db in debts  %}
+     
      
        <div class="col-lg-12">
         <span class="title-1 m-b-25">Credit Sales Record</span> <span class="float-right"><a href="{% url 'fms:create_debt' %}" class="btn btn-dark">Add Credit Sales</a></span>
@@ -22,8 +23,8 @@ All Credit Sales
                                                 <th>S/N</th>
                                                 <th>Name</th>
                                                 <th>File-No</th>
-                                                <th>Quantity</th>
-                                                <th>Department</th>
+                                                <th>Qty</th>
+                                                <th>Dept</th>
                                                 <th>Amount</th>
                                                 <th>Date</th>
                                                 <th>Signature</th>
@@ -31,25 +32,34 @@ All Credit Sales
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        {% for db in debts  %}
                                                 <tr>
+                                                
                                                 <td>{{db.id |capfirst}}</td>
                                                 <td>{{db.name |capfirst}}</td>
                                                 <td>{{db.file_no |capfirst}}</td>
                                                 <td>{{db.quantity}}</td>
                                                 <td>{{db.department}}</td>
-                                                <td class="text-right">{{db.amount}}</td>
+                                                <td class="text-right">NGN{{db.amount |intcomma}}</td>
                                                 <td>{{db.created}}</td>
                                                 <td><img src="{{db.signature.url}}" alt="signature" class="img-fluid"></td>
                                                 <td><span><a href="{% url 'fms:edit_debt' pk=db.id %}"><i class="fas text-info fa-edit"></i></a></span> &emsp; <span><a href="{% url 'fms:delete_debt' pk=db.id %}"><i class="fas text-danger fa-trash"></i></a></span></td>
-                                            
-                                            </tr>
-                                            
+                                                
+                                                </tr>
+                                                {% endfor %}
+                                                <tr>
+                                                <td colspan='8'><span class="float-right lead text-danger">Total Amount: NGN {{total.amount__sum |intcomma}}</span>&emsp; <button onclick="window.print()" class="btn btn-outnline-dark rounded-0"><i class="fas fa-print">&nbsp; &nbsp; Print All</i></button></td>
+                                              </tr>
                                         </tbody>
+
+                                        <tfoot>
+                                          
+                                        </tfoot>
                                     </table>
                                 </div>
       </div>
      
-     {% endfor %}
+   
 
       {% else %}
       <div class='text-center'>

@@ -11,7 +11,7 @@ All Fishes
     </div>
     <div class="row">
       {%if timelines %}
-     {% for tm in timelines  %}
+    
      
        <div class="col-lg-12">
         <span class="title-1 m-b-25">Harvest Timeline</span> <span class="float-right"><a href="{% url 'fms:add_harvest' %}" class="btn btn-dark">Add History</a></span>
@@ -26,7 +26,8 @@ All Fishes
                                                 <th>Manage</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody> 
+                                        {% for tm in timelines  %}
                                                 <tr>
                                                 
                                                 <td>{{tm.number |capfirst}}</td>
@@ -36,13 +37,13 @@ All Fishes
                                                 <td><span><a href="{% url 'fms:single_harvest' pk=tm.id %}"><i class="fas text-primary fa-eye"></i></a></span>&emsp;<span><a href="{% url 'fms:edit_harvest' pk=tm.id %}"><i class="fas text-info fa-edit"></i></a></span> &emsp; <span><a href="{% url 'fms:delete_harvest' pk=tm.id %}"><i class="fas text-danger fa-trash"></i></a></span></td>
                                             
                                             </tr>
-                                            
+                                        {% endfor %}    
                                         </tbody>
                                     </table>
                                 </div>
       </div>
      
-     {% endfor %}
+     
 
       {% else %}
       <div class='text-center'>

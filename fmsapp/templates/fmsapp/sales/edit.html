@@ -18,3 +18,14 @@
         </div>
     </section>
 {% endblock contents %}
+
+{% block skript %}
+    <script>
+        document.getElementById('amt').addEventListener('focusout',function(){
+            let qty = document.getElementById('qty').value
+            let price = document.getElementById('prc')
+            let amt = document.getElementById('amt').value
+            price.value = qty * amt
+        })
+    </script>
+{% endblock skript %}

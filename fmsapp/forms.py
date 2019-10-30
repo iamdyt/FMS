@@ -87,13 +87,13 @@ class HarvestForm(forms.ModelForm):
 class SalesForm(forms.ModelForm):
     class Meta:
         model = Sales
-        fields = '__all__'
+        fields =['types','weight','quantity','amount','price']
         widgets = {
             'types':forms.TextInput(attrs={'class':'form-control','placeholder':'e.g Tilapia'}),
-            'amount':forms.NumberInput(attrs={'class':'form-control','placeholder':'Price per one per weight'}),
+            'amount':forms.NumberInput(attrs={'class':'form-control','placeholder':'Price per one per weight','id':'amt'}),
             'weight':forms.NumberInput(attrs={'class':'form-control','placeholder':'Fish weight'}),
-            'quantity':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Number of Fish'}),
-            'price':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Amount to be paid'})
+            'quantity':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Number of Fish','id':'qty'}),
+            'price':forms.NumberInput(attrs={'class':'form-control','placeholder':'Total Amount to be paid','id':'prc','readonly':'readonly'})
 
         }
 
