@@ -47,7 +47,7 @@ class AccountUpdate(LoginRequiredMixin,UpdateView):
     template_name = 'fmsapp/account.html'
     success_url = reverse_lazy('fmsapp:dashboard')
 
-class Register(LoginRequiredMixin,CreateView):
+class Register(CreateView):
     template_name = 'fmsapp/home/signup.html'
     form_class = RegisterForm
     model = get_user_model()
